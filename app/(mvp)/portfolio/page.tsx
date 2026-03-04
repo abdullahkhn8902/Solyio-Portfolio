@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     "Explore the AI-powered SaaS MVPs Solyio has launched. Real case studies with measurable results: 10x content output, 80% time savings, and more. See our work in healthcare, education, marketing, and real estate.",
   alternates: {
-    canonical: "https://solyio.com/portfolio",
+    canonical: "https://solyio.com/mvp/portfolio",
   },
   openGraph: {
     title: "Solyio Portfolio - AI-Powered SaaS MVPs",
     description:
       "Explore successful AI-powered MVPs we've launched. Real products with real results in various industries.",
-    url: "https://solyio.com/portfolio",
+    url: "https://solyio.com/mvp/portfolio",
     type: "website",
   },
   twitter: {
@@ -30,21 +30,21 @@ function PortfolioJsonLd() {
     "@type": "CollectionPage",
     name: "Solyio Portfolio",
     description: "Collection of AI-powered SaaS MVPs built by Solyio",
-    url: "https://solyio.com/portfolio",
+    url: "https://solyio.com/mvp/portfolio",
     mainEntity: {
       "@type": "ItemList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "RoboMarketer", url: "https://solyio.com/portfolio/robomarketer" },
-        { "@type": "ListItem", position: 2, name: "ExpertAIQ", url: "https://solyio.com/portfolio/expertaiq" },
-        { "@type": "ListItem", position: 3, name: "CashAds", url: "https://solyio.com/portfolio/cashads" },
+        { "@type": "ListItem", position: 1, name: "RoboMarketer", url: "https://solyio.com/mvp/portfolio/robomarketer" },
+        { "@type": "ListItem", position: 2, name: "ExpertAIQ", url: "https://solyio.com/mvp/portfolio/expertaiq" },
+        { "@type": "ListItem", position: 3, name: "CashAds", url: "https://solyio.com/mvp/portfolio/cashads" },
         {
           "@type": "ListItem",
           position: 4,
           name: "HealthTrack AI",
-          url: "https://solyio.com/portfolio/healthtrack-ai",
+          url: "https://solyio.com/mvp/portfolio/healthtrack-ai",
         },
-        { "@type": "ListItem", position: 5, name: "LearnMate", url: "https://solyio.com/portfolio/learnmate" },
-        { "@type": "ListItem", position: 6, name: "PropWise", url: "https://solyio.com/portfolio/propwise" },
+        { "@type": "ListItem", position: 5, name: "LearnMate", url: "https://solyio.com/mvp/portfolio/learnmate" },
+        { "@type": "ListItem", position: 6, name: "PropWise", url: "https://solyio.com/mvp/portfolio/propwise" },
       ],
     },
   }
@@ -54,7 +54,8 @@ function PortfolioJsonLd() {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://solyio.com" },
-      { "@type": "ListItem", position: 2, name: "Portfolio", item: "https://solyio.com/portfolio" },
+      { "@type": "ListItem", position: 2, name: "MVP", item: "https://solyio.com/mvp" },
+      { "@type": "ListItem", position: 3, name: "Portfolio", item: "https://solyio.com/mvp/portfolio" },
     ],
   }
 

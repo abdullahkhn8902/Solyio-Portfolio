@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     "Schedule a free 30-minute discovery call with Solyio's AI experts. Discuss your SaaS MVP idea and learn how we can build your product in 10 days. Available for US and European clients.",
   alternates: {
-    canonical: "https://solyio.com/book",
+    canonical: "https://solyio.com/mvp/book",
   },
   openGraph: {
     title: "Book a Free Discovery Call - Solyio AI MVP Agency",
     description:
       "Schedule a free consultation to discuss your SaaS MVP idea. Get expert advice on AI-powered development.",
-    url: "https://solyio.com/book",
+    url: "https://solyio.com/mvp/book",
     type: "website",
   },
   twitter: {
@@ -48,7 +48,8 @@ function BookingJsonLd() {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://solyio.com" },
-      { "@type": "ListItem", position: 2, name: "Book a Call", item: "https://solyio.com/book" },
+      { "@type": "ListItem", position: 2, name: "MVP", item: "https://solyio.com/mvp" },
+      { "@type": "ListItem", position: 3, name: "Book a Call", item: "https://solyio.com/mvp/book" },
     ],
   }
 

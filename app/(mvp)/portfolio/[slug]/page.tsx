@@ -195,12 +195,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       ...project.tags.map((t) => t.toLowerCase()),
     ],
     alternates: {
-      canonical: `https://solyio.com/portfolio/${slug}`,
+      canonical: `https://solyio.com/mvp/portfolio/${slug}`,
     },
     openGraph: {
       title: `${project.name} - Solyio Portfolio`,
       description: project.description,
-      url: `https://solyio.com/portfolio/${slug}`,
+      url: `https://solyio.com/mvp/portfolio/${slug}`,
       type: "article",
       images: [
         {
@@ -240,7 +240,7 @@ function ProjectJsonLd({ project, slug }: { project: (typeof projects)[ProjectKe
     },
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://solyio.com/portfolio/${slug}`,
+      "@id": `https://solyio.com/mvp/portfolio/${slug}`,
     },
     about: {
       "@type": "SoftwareApplication",
@@ -256,8 +256,9 @@ function ProjectJsonLd({ project, slug }: { project: (typeof projects)[ProjectKe
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://solyio.com" },
-      { "@type": "ListItem", position: 2, name: "Portfolio", item: "https://solyio.com/portfolio" },
-      { "@type": "ListItem", position: 3, name: project.name, item: `https://solyio.com/portfolio/${slug}` },
+      { "@type": "ListItem", position: 2, name: "MVP", item: "https://solyio.com/mvp" },
+      { "@type": "ListItem", position: 3, name: "Portfolio", item: "https://solyio.com/mvp/portfolio" },
+      { "@type": "ListItem", position: 4, name: project.name, item: `https://solyio.com/mvp/portfolio/${slug}` },
     ],
   }
 

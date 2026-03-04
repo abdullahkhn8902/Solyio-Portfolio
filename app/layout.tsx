@@ -10,11 +10,11 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 export const metadata: Metadata = {
   metadataBase: new URL("https://solyio.com"),
   title: {
-    default: "Solyio | AI-Powered SaaS MVP Development Agency | Launch in 10 Days",
-    template: "%s | Solyio - AI MVP Development",
+    default: "Solyio | AI-Powered SaaS Development",
+    template: "%s | Solyio",
   },
   description:
-    "Launch a revenue-ready SaaS MVP with AI agents in 10 days. Solyio is the leading AI-powered MVP development agency for startups, entrepreneurs, and non-technical founders in the US and Europe. Get custom AI agents, automated workflows, and scalable SaaS products.",
+    "Transform your startup idea into a revenue-ready AI-powered SaaS MVP. Solyio delivers custom AI agents, automated workflows, and scalable products.",
   keywords: [
     "SaaS MVP development",
     "AI MVP agency",

@@ -8,13 +8,13 @@ export const metadata: Metadata = {
   description:
     "Contact Solyio for AI-powered SaaS MVP development services. Get a free consultation for your startup idea. We serve clients in the US, UK, Germany, and across Europe.",
   alternates: {
-    canonical: "https://solyio.com/contact",
+    canonical: "https://solyio.com/mvp/contact",
   },
   openGraph: {
     title: "Contact Solyio - AI MVP Development Agency",
     description:
       "Get in touch with Solyio for your AI-powered MVP project. Free consultation available for startups and entrepreneurs.",
-    url: "https://solyio.com/contact",
+    url: "https://solyio.com/mvp/contact",
     type: "website",
   },
   twitter: {
@@ -30,7 +30,7 @@ function ContactJsonLd() {
     "@type": "ContactPage",
     name: "Contact Solyio",
     description: "Contact page for Solyio AI MVP development services",
-    url: "https://solyio.com/contact",
+    url: "https://solyio.com/mvp/contact",
     mainEntity: {
       "@type": "Organization",
       name: "Solyio",
@@ -48,7 +48,8 @@ function ContactJsonLd() {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://solyio.com" },
-      { "@type": "ListItem", position: 2, name: "Contact", item: "https://solyio.com/contact" },
+      { "@type": "ListItem", position: 2, name: "MVP", item: "https://solyio.com/mvp" },
+      { "@type": "ListItem", position: 3, name: "Contact", item: "https://solyio.com/mvp/contact" },
     ],
   }
 

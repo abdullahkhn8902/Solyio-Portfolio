@@ -4,23 +4,23 @@ import Image from "next/image"
 export function Footer() {
   const footerLinks = {
     services: [
-      { label: "AI-Powered MVP", href: "/#services" },
-      { label: "AI Agent Integration", href: "/#services" },
-      { label: "SEO & Content Setup", href: "/#services" },
-      { label: "Marketing Automation", href: "/#services" },
-      { label: "Launch & Setup", href: "/#services" },
+      { label: "AI-Powered MVP", href: "/mvp#services" },
+      { label: "AI Agent Integration", href: "/mvp#services" },
+      { label: "SEO & Content Setup", href: "/mvp#services" },
+      { label: "Marketing Automation", href: "/mvp#services" },
+      { label: "Launch & Setup", href: "/mvp#services" },
     ],
     company: [
-      { label: "About", href: "#" },
-      { label: "Portfolio", href: "/portfolio" },
+      { label: "About", href: "/" },
+      { label: "Portfolio", href: "/mvp/portfolio" },
       { label: "Blog", href: "#" },
       { label: "Careers", href: "#" },
     ],
     resources: [
       { label: "AI Agent Guide", href: "#" },
-      { label: "Case Studies", href: "/portfolio" },
-      { label: "FAQ", href: "/contact" },
-      { label: "Contact", href: "/contact" },
+      { label: "Case Studies", href: "/mvp/portfolio" },
+      { label: "FAQ", href: "/mvp/contact" },
+      { label: "Contact", href: "/mvp/contact" },
     ],
     legal: [
       { label: "Privacy Policy", href: "#" },
@@ -40,7 +40,7 @@ export function Footer() {
             Chat to one of our experts to discuss how we can take your idea to production — for good.
           </p>
           <Link
-            href="/book"
+            href="/mvp/book"
             className="inline-flex items-center rounded-lg bg-[#1e3a5f] px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#2a4a73]"
           >
             Book a discovery call

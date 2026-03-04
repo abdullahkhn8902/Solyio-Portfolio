@@ -22,31 +22,31 @@ export function Header() {
 
         <nav className="hidden items-center gap-8 md:flex">
           <Link
-            href="/#services"
+            href="/mvp/#services"
             className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             Services
           </Link>
           <Link
-            href="/#ai-agents"
+            href="/mvp/#ai-agents"
             className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             AI Agents
           </Link>
           <Link
-            href="/#your-mvp-journey"
+            href="/mvp/#your-mvp-journey"
             className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             Your MVP Journey
           </Link>
           <Link
-            href="/portfolio"
+            href="/mvp/portfolio"
             className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             Portfolio
           </Link>
           <Link
-            href="/contact"
+            href="/mvp/contact"
             className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
           >
             Contact
@@ -55,7 +55,7 @@ export function Header() {
 
         <div className="hidden items-center gap-3 md:flex">
           <Button size="sm" className="bg-[#1e3a5f] text-white hover:bg-[#2a4a73]" asChild>
-            <Link href="/book">Book a call</Link>
+            <Link href="/mvp/book">Book a call</Link>
           </Button>
         </div>
 
@@ -68,35 +68,35 @@ export function Header() {
         <div className="border-t border-border bg-background md:hidden">
           <nav className="flex flex-col gap-4 px-4 py-4">
             <Link
-              href="/#services"
+              href="/mvp/#services"
               className="text-sm font-medium text-muted-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
               Services
             </Link>
             <Link
-              href="/#ai-agents"
+              href="/mvp/#ai-agents"
               className="text-sm font-medium text-muted-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
               AI Agents
             </Link>
             <Link
-              href="/#your-mvp-journey"
+              href="/mvp/#your-mvp-journey"
               className="text-sm font-medium text-muted-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
               Your MVP Journey
             </Link>
             <Link
-              href="/portfolio"
+              href="/mvp/portfolio"
               className="text-sm font-medium text-muted-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
               Portfolio
             </Link>
             <Link
-              href="/contact"
+              href="/mvp/contact"
               className="text-sm font-medium text-muted-foreground"
               onClick={() => setMobileMenuOpen(false)}
             >
@@ -104,7 +104,7 @@ export function Header() {
             </Link>
             <div className="flex flex-col gap-2 pt-2">
               <Button size="sm" className="bg-[#1e3a5f] text-white hover:bg-[#2a4a73]" asChild>
-                <Link href="/book" onClick={() => setMobileMenuOpen(false)}>
+                <Link href="/mvp/book" onClick={() => setMobileMenuOpen(false)}>
                   Book a call
                 </Link>
               </Button>
