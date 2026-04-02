@@ -1,131 +1,140 @@
 "use client"
 
-import type React from "react"
-
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Mail, MessageSquare, MapPin, CheckCircle2 } from "lucide-react"
+
+type Status = "idle" | "loading" | "success" | "error"
 
 export function ContactForm() {
-  const [submitted, setSubmitted] = useState(false)
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  })
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" })
+  const [status, setStatus] = useState<Status>("idle")
+  const [errorMsg, setErrorMsg] = useState("")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  function update(field: keyof typeof form, value: string) {
+    setForm((prev) => ({ ...prev, [field]: value }))
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    setSubmitted(true)
+    setStatus("loading")
+    setErrorMsg("")
+
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    })
+
+    if (res.ok) {
+      setStatus("success")
+      setForm({ name: "", email: "", subject: "", message: "" })
+    } else {
+      const data = await res.json().catch(() => ({}))
+      setErrorMsg(data.error ?? "Something went wrong. Please try again.")
+      setStatus("error")
+    }
   }
 
   return (
-    <section id="contact" className="py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto mb-16 max-w-3xl text-center">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-wider text-[#1e3a5f]">Contact Us</p>
-          <h2 className="mb-4 text-3xl font-bold tracking-tight text-foreground md:text-4xl">
-            Have questions? <span className="text-[#1e3a5f]">Get in touch</span>
-          </h2>
-          <p className="text-lg text-muted-foreground">
-            Whether you have a question about our services, pricing, or just want to chat — we&apos;re here to help.
-          </p>
+    <form onSubmit={handleSubmit} className="space-y-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="space-y-2">
+          <label className="text-[0.7rem] uppercase tracking-widest font-bold text-[#5e3f3e]">
+            Full Identity
+          </label>
+          <input
+            type="text"
+            placeholder="John Doe"
+            required
+            value={form.name}
+            onChange={(e) => update("name", e.target.value)}
+            className="w-full bg-[#f6f3f2] border-none rounded-xl p-4 focus:ring-2 focus:ring-[#bb0029]/50 transition-all outline-none text-[#1c1b1b] placeholder:text-[#5e3f3e]/40"
+          />
         </div>
-
-        <div className="grid gap-12 lg:grid-cols-3">
-          {/* Contact Info Cards */}
-          <div className="space-y-6 lg:col-span-1">
-            <div className="rounded-xl border border-border bg-card p-6">
-              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#f0f7ff]">
-                <Mail className="h-5 w-5 text-[#1e3a5f]" />
-              </div>
-              <h3 className="mb-1 font-semibold text-foreground">Email Us</h3>
-              <p className="text-sm text-muted-foreground">hello@solyio.com</p>
-            </div>
-            <div className="rounded-xl border border-border bg-card p-6">
-              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#f0f7ff]">
-                <MessageSquare className="h-5 w-5 text-[#1e3a5f]" />
-              </div>
-              <h3 className="mb-1 font-semibold text-foreground">Live Chat</h3>
-              <p className="text-sm text-muted-foreground">Available Mon-Fri, 9am-6pm EST</p>
-            </div>
-            <div className="rounded-xl border border-border bg-card p-6">
-              <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#f0f7ff]">
-                <MapPin className="h-5 w-5 text-[#1e3a5f]" />
-              </div>
-              <h3 className="mb-1 font-semibold text-foreground">Location</h3>
-              <p className="text-sm text-muted-foreground">Remote-first, serving clients globally</p>
-            </div>
-          </div>
-
-          {/* Contact Form */}
-          <div className="rounded-2xl border border-border bg-card p-8 shadow-lg lg:col-span-2">
-            {submitted ? (
-              <div className="flex flex-col items-center justify-center py-12 text-center">
-                <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
-                  <CheckCircle2 className="h-8 w-8 text-green-600" />
-                </div>
-                <h3 className="mb-2 text-xl font-semibold text-foreground">Message Sent!</h3>
-                <p className="text-muted-foreground">We&apos;ll get back to you within 24 hours.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <div className="space-y-2">
-                    <Label htmlFor="contact-name">Full Name</Label>
-                    <Input
-                      id="contact-name"
-                      placeholder="Your name"
-                      value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="contact-email">Email</Label>
-                    <Input
-                      id="contact-email"
-                      type="email"
-                      placeholder="you@example.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      required
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="subject">Subject</Label>
-                  <Input
-                    id="subject"
-                    placeholder="How can we help?"
-                    value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="message">Message</Label>
-                  <Textarea
-                    id="message"
-                    placeholder="Tell us more about your question or project..."
-                    rows={5}
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    required
-                  />
-                </div>
-                <Button type="submit" size="lg" className="w-full bg-[#1e3a5f] text-white hover:bg-[#2a4a73]">
-                  Send Message
-                </Button>
-              </form>
-            )}
-          </div>
+        <div className="space-y-2">
+          <label className="text-[0.7rem] uppercase tracking-widest font-bold text-[#5e3f3e]">
+            Digital Address
+          </label>
+          <input
+            type="email"
+            placeholder="john@company.ai"
+            required
+            value={form.email}
+            onChange={(e) => update("email", e.target.value)}
+            className="w-full bg-[#f6f3f2] border-none rounded-xl p-4 focus:ring-2 focus:ring-[#bb0029]/50 transition-all outline-none text-[#1c1b1b] placeholder:text-[#5e3f3e]/40"
+          />
         </div>
       </div>
-    </section>
+
+      <div className="space-y-2">
+        <label className="text-[0.7rem] uppercase tracking-widest font-bold text-[#5e3f3e]">
+          Subject / Intent
+        </label>
+        <input
+          type="text"
+          placeholder="AI Infrastructure Inquiry"
+          required
+          value={form.subject}
+          onChange={(e) => update("subject", e.target.value)}
+          className="w-full bg-[#f6f3f2] border-none rounded-xl p-4 focus:ring-2 focus:ring-[#bb0029]/50 transition-all outline-none text-[#1c1b1b] placeholder:text-[#5e3f3e]/40"
+        />
+      </div>
+
+      <div className="space-y-2">
+        <label className="text-[0.7rem] uppercase tracking-widest font-bold text-[#5e3f3e]">
+          Message Details
+        </label>
+        <textarea
+          rows={5}
+          placeholder="Tell us about your technical challenges..."
+          required
+          value={form.message}
+          onChange={(e) => update("message", e.target.value)}
+          className="w-full bg-[#f6f3f2] border-none rounded-xl p-4 focus:ring-2 focus:ring-[#bb0029]/50 transition-all outline-none resize-none text-[#1c1b1b] placeholder:text-[#5e3f3e]/40"
+        />
+      </div>
+
+      {/* Success banner */}
+      {status === "success" && (
+        <div className="flex items-center gap-3 px-5 py-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm font-medium">
+          <span className="material-symbols-outlined text-lg">check_circle</span>
+          Message transmitted! We&apos;ll be in touch within 2 hours.
+        </div>
+      )}
+
+      {/* Error banner */}
+      {status === "error" && (
+        <div className="flex items-center gap-3 px-5 py-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm font-medium">
+          <span className="material-symbols-outlined text-lg">error</span>
+          {errorMsg}
+        </div>
+      )}
+
+      <button
+        type="submit"
+        disabled={status === "loading" || status === "success"}
+        className="w-full py-5 rounded-full font-headline font-bold text-lg tracking-tight text-white hover:opacity-90 active:scale-[0.98] transition-all flex items-center justify-center gap-3 disabled:opacity-60 disabled:cursor-not-allowed"
+        style={{ backgroundImage: "linear-gradient(135deg, #bb0029 0%, #e90035 100%)" }}
+      >
+        {status === "loading" ? (
+          <>
+            <span
+              className="w-5 h-5 rounded-full border-2 border-white/30 border-t-white"
+              style={{ animation: "spin 0.8s linear infinite" }}
+            />
+            Transmitting…
+          </>
+        ) : status === "success" ? (
+          <>
+            <span className="material-symbols-outlined text-lg">check_circle</span>
+            Message Sent
+          </>
+        ) : (
+          <>
+            Transmit Message
+            <span className="material-symbols-outlined">send</span>
+          </>
+        )}
+      </button>
+    </form>
   )
 }

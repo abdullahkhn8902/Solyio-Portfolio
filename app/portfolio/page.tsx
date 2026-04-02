@@ -1,80 +1,64 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { PortfolioPageContent } from "@/components/portfolio-page-content"
+import Link from "next/link"
 import type { Metadata } from "next"
+import { SiteNavbar } from "@/components/site-navbar"
+import { PortfolioGrid } from "@/components/portfolio-grid"
+import { SiteFooter } from "@/components/site-footer"
 
 export const metadata: Metadata = {
-  title: "Portfolio - AI-Powered SaaS MVPs We've Launched",
+  title: "Portfolio | Solyio — Our Impact",
   description:
-    "Explore the AI-powered SaaS MVPs Solyio has launched. Real case studies with measurable results: 10x content output, 80% time savings, and more. See our work in healthcare, education, marketing, and real estate.",
-  alternates: {
-    canonical: "https://solyio.com/portfolio",
-  },
-  openGraph: {
-    title: "Solyio Portfolio - AI-Powered SaaS MVPs",
-    description:
-      "Explore successful AI-powered MVPs we've launched. Real products with real results in various industries.",
-    url: "https://solyio.com/portfolio",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Solyio Portfolio - AI MVPs We've Built",
-    description: "See the AI-powered SaaS products we've launched for startups and businesses.",
-  },
+    "A gallery of neural-first AI solutions that transformed legacy systems into high-efficiency profit engines. Real results across SaaS, Marketing, Advertising, and Healthcare.",
+  alternates: { canonical: "https://solyio.com/portfolio" },
 }
 
-function PortfolioJsonLd() {
-  const collectionSchema = {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    name: "Solyio Portfolio",
-    description: "Collection of AI-powered SaaS MVPs built by Solyio",
-    url: "https://solyio.com/portfolio",
-    mainEntity: {
-      "@type": "ItemList",
-      itemListElement: [
-        { "@type": "ListItem", position: 1, name: "RoboMarketer", url: "https://solyio.com/portfolio/robomarketer" },
-        { "@type": "ListItem", position: 2, name: "ExpertAIQ", url: "https://solyio.com/portfolio/expertaiq" },
-        { "@type": "ListItem", position: 3, name: "CashAds", url: "https://solyio.com/portfolio/cashads" },
-        {
-          "@type": "ListItem",
-          position: 4,
-          name: "HealthTrack AI",
-          url: "https://solyio.com/portfolio/healthtrack-ai",
-        },
-        { "@type": "ListItem", position: 5, name: "LearnMate", url: "https://solyio.com/portfolio/learnmate" },
-        { "@type": "ListItem", position: 6, name: "PropWise", url: "https://solyio.com/portfolio/propwise" },
-      ],
-    },
-  }
+/* ─── HERO ───────────────────────────────────────────────────────── */
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://solyio.com" },
-      { "@type": "ListItem", position: 2, name: "Portfolio", item: "https://solyio.com/portfolio" },
-    ],
-  }
-
+function HeroSection() {
   return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-    </>
+    <section className="px-8 max-w-[1440px] mx-auto mb-24">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
+        <div className="max-w-3xl">
+          <span className="text-[10px] uppercase tracking-widest text-[#bb0029] font-bold mb-4 block">
+            Proven Results
+          </span>
+          <h1 className="text-7xl md:text-8xl font-headline font-black tracking-tighter leading-none text-[#1c1b1b] mb-8">
+            Our Impact
+          </h1>
+          <p className="text-xl md:text-2xl text-[#5e3f3e] font-light leading-relaxed max-w-2xl">
+            A gallery of neural-first solutions that transformed legacy systems
+            into high-efficiency profit engines. We don&apos;t just build
+            software; we engineer competitive advantages.
+          </p>
+        </div>
+
+        <div className="flex flex-col items-start md:items-end gap-4">
+          <div className="h-20 w-px bg-[#e8bcbb]/30 hidden md:block mr-12 mb-4" />
+          <Link
+            href="/book"
+            className="bg-white text-[#1c1b1b] border border-[#e8bcbb]/30 px-8 py-4 rounded-full font-bold flex items-center gap-3 hover:bg-[#f0eded] transition-all group"
+          >
+            Let&apos;s Talk Efficiency
+            <span className="material-symbols-outlined group-hover:translate-x-1 transition-transform">
+              arrow_forward
+            </span>
+          </Link>
+        </div>
+      </div>
+    </section>
   )
 }
 
+/* ─── PAGE ───────────────────────────────────────────────────────── */
+
 export default function PortfolioPage() {
   return (
-    <>
-      <PortfolioJsonLd />
-      <main className="min-h-screen bg-background" role="main" aria-label="Portfolio">
-        <Header />
-        <PortfolioPageContent />
-        <Footer />
+    <div className="font-body bg-[#fcf9f8] text-[#1c1b1b] leading-relaxed selection:bg-[#bb0029]/20 selection:text-[#bb0029]">
+      <SiteNavbar />
+      <main className="pt-32 pb-0">
+        <HeroSection />
+        <PortfolioGrid />
       </main>
-    </>
+      <SiteFooter />
+    </div>
   )
 }

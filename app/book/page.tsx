@@ -1,74 +1,192 @@
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { BookingPageContent } from "@/components/booking-page-content"
 import type { Metadata } from "next"
+import { SiteNavbar } from "@/components/site-navbar"
+import { ContactForm } from "@/components/contact-form"
+import { SiteFooter } from "@/components/site-footer"
 
 export const metadata: Metadata = {
-  title: "Book a Free Discovery Call - AI MVP Consultation",
+  title: "Contact Solyio | Let's Build the Future",
   description:
-    "Schedule a free 30-minute discovery call with Solyio's AI experts. Discuss your SaaS MVP idea and learn how we can build your product in 10 days. Available for US and European clients.",
-  alternates: {
-    canonical: "https://solyio.com/book",
-  },
-  openGraph: {
-    title: "Book a Free Discovery Call - Solyio AI MVP Agency",
-    description:
-      "Schedule a free consultation to discuss your SaaS MVP idea. Get expert advice on AI-powered development.",
-    url: "https://solyio.com/book",
-    type: "website",
-  },
-  twitter: {
-    card: "summary",
-    title: "Book a Free Discovery Call - Solyio",
-    description: "Schedule a free 30-minute call to discuss your AI MVP project.",
-  },
+    "Start your kinetic growth journey. We engineer the neural infrastructure that scales intelligence and accelerates your roadmap by 10x.",
+  alternates: { canonical: "https://solyio.com/book" },
 }
 
-function BookingJsonLd() {
-  const serviceSchema = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: "Free Discovery Call",
-    description: "30-minute consultation to discuss your SaaS MVP idea",
-    provider: {
-      "@type": "Organization",
-      name: "Solyio",
-      url: "https://solyio.com",
-    },
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      description: "Free 30-minute discovery call",
-    },
-  }
+/* ─── HERO ───────────────────────────────────────────────────────── */
 
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://solyio.com" },
-      { "@type": "ListItem", position: 2, name: "Book a Call", item: "https://solyio.com/book" },
-    ],
-  }
-
+function HeroSection() {
   return (
-    <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-    </>
+    <section className="max-w-[1440px] mx-auto px-8 md:px-12 mb-20">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-end">
+        <div className="md:col-span-8">
+          <span className="text-[10px] uppercase tracking-[0.2em] text-[#bb0029] font-bold mb-4 block">
+            Communication Portal
+          </span>
+          <h1 className="text-6xl md:text-8xl font-headline font-bold tracking-[-0.04em] leading-[0.9] text-[#1c1b1b] mb-8">
+            Let&apos;s Build the{" "}
+            <br />
+            <span
+              className="text-transparent bg-clip-text"
+              style={{ backgroundImage: "linear-gradient(135deg, #bb0029 0%, #e90035 100%)" }}
+            >
+              Future.
+            </span>
+          </h1>
+          <p className="text-xl md:text-2xl text-[#5e3f3e] max-w-2xl leading-relaxed">
+            Start your kinetic growth journey today. We engineer the neural
+            infrastructure that scales intelligence and accelerates your roadmap
+            by 10x.
+          </p>
+        </div>
+
+        <div className="md:col-span-4 hidden md:flex justify-end">
+          <div className="w-32 h-32 rounded-full border border-[#e8bcbb]/30 flex items-center justify-center animate-pulse">
+            <span className="material-symbols-outlined text-4xl text-[#bb0029]">
+              hub
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }
 
+/* ─── MAIN CONTENT ───────────────────────────────────────────────── */
+
+function ContactSection() {
+  return (
+    <section className="max-w-[1440px] mx-auto px-8 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12">
+      {/* Form */}
+      <div className="lg:col-span-7 bg-white rounded-2xl p-8 md:p-12 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.03)] border border-[#e8bcbb]/10">
+        <ContactForm />
+      </div>
+
+      {/* Right column */}
+      <div className="lg:col-span-5 space-y-12">
+        {/* Info grid */}
+        <div className="bg-[#f0eded] rounded-2xl p-10 space-y-12">
+          {/* Location */}
+          <div className="flex gap-6">
+            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shrink-0 shadow-sm">
+              <span className="material-symbols-outlined text-[#bb0029]">
+                location_on
+              </span>
+            </div>
+            <div>
+              <h4 className="text-[0.7rem] uppercase tracking-widest font-black text-[#1c1b1b] mb-2">
+                Office Headquarters
+              </h4>
+              <p className="text-[#5e3f3e] leading-relaxed">
+                42 Technology Plaza, Suite 900
+                <br />
+                Canary Wharf, London E14 5AB
+                <br />
+                United Kingdom
+              </p>
+            </div>
+          </div>
+
+          {/* Email */}
+          <div className="flex gap-6">
+            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shrink-0 shadow-sm">
+              <span className="material-symbols-outlined text-[#bb0029]">
+                alternate_email
+              </span>
+            </div>
+            <div>
+              <h4 className="text-[0.7rem] uppercase tracking-widest font-black text-[#1c1b1b] mb-2">
+                Email Channels
+              </h4>
+              <p className="text-xl font-bold text-[#1c1b1b]">info@solyio.ai</p>
+              <p className="text-sm text-[#5e3f3e]">
+                Response within 4 neural cycles (2 hours)
+              </p>
+            </div>
+          </div>
+
+          {/* Phone */}
+          <div className="flex gap-6">
+            <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shrink-0 shadow-sm">
+              <span className="material-symbols-outlined text-[#bb0029]">
+                call
+              </span>
+            </div>
+            <div>
+              <h4 className="text-[0.7rem] uppercase tracking-widest font-black text-[#1c1b1b] mb-2">
+                Global Direct
+              </h4>
+              <p className="text-xl font-bold text-[#1c1b1b]">+44 20 7946 0123</p>
+              <p className="text-sm text-[#5e3f3e]">
+                Mon – Fri, 08:00 – 18:00 GMT
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Fast-track CTA card */}
+        <div className="bg-[#1c1b1b] text-[#fcf9f8] rounded-2xl p-10 relative overflow-hidden group">
+          <div className="relative z-10">
+            <h3 className="text-2xl font-headline font-bold mb-4">
+              Fast-Track Engagement
+            </h3>
+            <p className="text-[#e5e2e1] mb-8 text-sm leading-relaxed">
+              Skip the inbox. Schedule a direct technical consultation to discuss
+              how Solyio can deliver{" "}
+              <span className="text-[#bb0029] font-bold">2x profit efficiency</span>{" "}
+              within 6 months.
+            </p>
+            <a
+              href="mailto:info@solyio.ai"
+              className="inline-flex items-center gap-2 border border-[#e5e2e1]/30 rounded-full px-6 py-3 hover:bg-white hover:text-[#1c1b1b] transition-all font-bold text-sm"
+            >
+              Schedule a Call
+              <span className="material-symbols-outlined text-sm">
+                arrow_forward
+              </span>
+            </a>
+          </div>
+          {/* Glow */}
+          <div className="absolute -right-10 -bottom-10 w-48 h-48 rounded-full bg-[#bb0029]/20 blur-3xl group-hover:scale-150 transition-transform duration-700 pointer-events-none" />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ─── MAP BANNER ─────────────────────────────────────────────────── */
+
+function MapSection() {
+  return (
+    <section className="max-w-[1440px] mx-auto px-8 md:px-12 mt-20">
+      <div className="relative w-full h-[400px] rounded-2xl overflow-hidden grayscale hover:grayscale-0 transition-all duration-700">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5vJ2XgDAEUpa3Z0jTCzLYiWF3xpGByOB_16ilLezIFAi2XSIgX1eOZSvJbaBgSVwUUE_r-0B1JCxh2hNyxxVVJJpiUln5Zh_M5n7LKNjEaPcPuUT-kJLdWwM36t3Z7DpoJalMDpw7a30D8QwH_Uy4UINDSbmQ_7An747hFNZJ-jprXL67ihEKLAqqDh-3AQwUDxdhSXYocVWf1N31PD6c0RuxxUQr5qwS7R615o2wtDS0JjySZDh0ydjsQ5apYoJcG21N7rNbrhDo"
+          alt="Solyio HQ — London Canary Wharf"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-[#bb0029]/5 pointer-events-none" />
+        <div className="absolute bottom-8 left-8 bg-white p-6 rounded-xl shadow-xl max-w-xs">
+          <h5 className="font-headline font-bold text-[#bb0029] mb-1">Find Us</h5>
+          <p className="text-xs text-[#5e3f3e]">
+            Our engineering hub is located in the heart of London&apos;s tech district.
+          </p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ─── PAGE ───────────────────────────────────────────────────────── */
+
 export default function BookPage() {
   return (
-    <>
-      <BookingJsonLd />
-      <main className="min-h-screen bg-background" role="main" aria-label="Book a Discovery Call">
-        <Header />
-        <BookingPageContent />
-        <Footer />
+    <div className="font-body bg-[#fcf9f8] text-[#1c1b1b] selection:bg-[#bb0029]/10 selection:text-[#bb0029]">
+      <SiteNavbar />
+      <main className="pt-32 pb-20">
+        <HeroSection />
+        <ContactSection />
+        <MapSection />
       </main>
-    </>
+      <SiteFooter />
+    </div>
   )
 }

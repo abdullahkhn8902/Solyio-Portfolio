@@ -21,6 +21,7 @@ interface Project {
   timeline: string
   clientType: string
   results: ProjectResult[]
+  thumbnail?: string
 }
 
 export function ProjectDetail({ project }: { project: Project }) {
@@ -64,10 +65,21 @@ export function ProjectDetail({ project }: { project: Project }) {
             </div>
 
             <div className="flex items-center justify-center">
-              <div className="aspect-square w-full max-w-md rounded-2xl bg-gradient-to-br from-[#1e3a5f]/5 to-[#1e3a5f]/10 p-12">
-                <div className="flex h-full items-center justify-center rounded-xl bg-white shadow-lg">
-                  <span className="text-8xl font-bold text-[#1e3a5f]">{project.name[0]}</span>
-                </div>
+              <div className="aspect-video w-full max-w-lg overflow-hidden rounded-2xl shadow-lg">
+                {project.thumbnail ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={project.thumbnail}
+                    alt={project.name}
+                    className="h-full w-full object-cover object-top"
+                  />
+                ) : (
+                  <div className="flex h-full items-center justify-center bg-gradient-to-br from-[#1e3a5f]/5 to-[#1e3a5f]/10 p-12">
+                    <div className="flex h-full w-full items-center justify-center rounded-xl bg-white shadow-lg">
+                      <span className="text-8xl font-bold text-[#1e3a5f]">{project.name[0]}</span>
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           </div>

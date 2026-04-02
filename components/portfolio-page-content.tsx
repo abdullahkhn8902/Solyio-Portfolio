@@ -11,6 +11,7 @@ const projects = [
     outcome: "10x faster content creation",
     tags: ["Marketing", "AI Agents", "Automation"],
     clientType: "Marketing Agency",
+    thumbnail: "/RoboMarketer.png",
   },
   {
     slug: "expertaiq",
@@ -20,6 +21,18 @@ const projects = [
     outcome: "80% reduction in manual research",
     tags: ["Analytics", "AI Insights", "Data"],
     clientType: "Research Firm",
+    thumbnail: "/ExpertAIQ.png",
+  },
+
+  {
+    slug: "healthtrack-ai",
+    name: "HealthTrack AI",
+    description: "Patient engagement platform with AI-powered health recommendations and appointment scheduling.",
+    aiAgent: "Health & Wellness Agent",
+    outcome: "60% reduction in no-shows",
+    tags: ["Healthcare", "Patient Engagement", "AI"],
+    clientType: "Healthcare Clinic",
+    thumbnail: "/PriceSmurf.png",
   },
   {
     slug: "cashads",
@@ -29,27 +42,10 @@ const projects = [
     outcome: "35% improvement in ROAS",
     tags: ["Advertising", "Optimization", "AI"],
     clientType: "E-commerce Brand",
+    thumbnail: "/CashAds.png",
   },
   {
-    slug: "healthtrack-ai",
-    name: "HealthTrack AI",
-    description: "Patient engagement platform with AI-powered health recommendations and appointment scheduling.",
-    aiAgent: "Health & Wellness Agent",
-    outcome: "60% reduction in no-shows",
-    tags: ["Healthcare", "Patient Engagement", "AI"],
-    clientType: "Healthcare Clinic",
-  },
-  {
-    slug: "learnmate",
-    name: "LearnMate",
-    description: "Adaptive learning platform with AI tutors that personalize education for each student.",
-    aiAgent: "Education & Tutoring Agent",
-    outcome: "45% improvement in test scores",
-    tags: ["Education", "EdTech", "AI Tutoring"],
-    clientType: "Online Education Company",
-  },
-  {
-    slug: "propwise",
+    slug: "Upgrr",
     name: "PropWise",
     description:
       "Real estate management platform with AI agents for tenant communication and maintenance coordination.",
@@ -57,6 +53,18 @@ const projects = [
     outcome: "50% faster maintenance resolution",
     tags: ["Real Estate", "Property Management", "AI"],
     clientType: "Property Management Company",
+    thumbnail: "/upgrr.png",
+  },
+  {
+    slug: "Meon",
+    name: "PropWise",
+    description:
+      "Real estate management platform with AI agents for tenant communication and maintenance coordination.",
+    aiAgent: "Property Management Agent",
+    outcome: "50% faster maintenance resolution",
+    tags: ["Real Estate", "Property Management", "AI"],
+    clientType: "Property Management Company",
+    thumbnail: "/upgrr.png",
   },
 ]
 
@@ -112,12 +120,21 @@ export function PortfolioPageContent() {
                 key={project.slug}
                 className="group overflow-hidden rounded-2xl border border-border bg-card transition-all hover:border-[#1e3a5f]/30 hover:shadow-lg"
               >
-                <div className="aspect-video bg-gradient-to-br from-[#f0f7ff] to-[#e8f4ff] p-6">
-                  <div className="flex h-full items-center justify-center">
-                    <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white shadow-sm">
-                      <span className="text-3xl font-bold text-[#1e3a5f]">{project.name[0]}</span>
+                <div className="aspect-video overflow-hidden bg-gradient-to-br from-[#f0f7ff] to-[#e8f4ff]">
+                  {project.thumbnail ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={project.thumbnail}
+                      alt={project.name}
+                      className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="flex h-full items-center justify-center p-6">
+                      <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white shadow-sm">
+                        <span className="text-3xl font-bold text-[#1e3a5f]">{project.name[0]}</span>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
                 <div className="p-6">
                   <div className="mb-2 text-xs font-medium text-[#1e3a5f]">{project.clientType}</div>

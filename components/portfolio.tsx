@@ -11,6 +11,7 @@ export function Portfolio() {
       aiAgent: "Marketing & Content Agent",
       outcome: "10x faster content creation",
       tags: ["Marketing", "AI Agents", "Automation"],
+      thumbnail: "/RoboMarketer.png",
     },
     {
       slug: "expertaiq",
@@ -19,6 +20,7 @@ export function Portfolio() {
       aiAgent: "Research & Analysis Agent",
       outcome: "80% reduction in manual research",
       tags: ["Analytics", "AI Insights", "Data"],
+      thumbnail: "/ExpertAIQ.png",
     },
     {
       slug: "cashads",
@@ -27,6 +29,7 @@ export function Portfolio() {
       aiAgent: "Ad Optimization Agent",
       outcome: "35% improvement in ROAS",
       tags: ["Advertising", "Optimization", "AI"],
+      thumbnail: "/PriceSmurf.png",
     },
   ]
 
@@ -47,12 +50,13 @@ export function Portfolio() {
               key={project.name}
               className="group overflow-hidden rounded-2xl border border-border bg-card transition-all hover:border-[#1e3a5f]/30 hover:shadow-lg"
             >
-              <div className="aspect-video bg-gradient-to-br from-[#f0f7ff] to-[#e8f4ff] p-6">
-                <div className="flex h-full items-center justify-center">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-sm">
-                    <span className="text-2xl font-bold text-[#1e3a5f]">{project.name[0]}</span>
-                  </div>
-                </div>
+              <div className="aspect-video overflow-hidden bg-gradient-to-br from-[#f0f7ff] to-[#e8f4ff]">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={project.thumbnail}
+                  alt={project.name}
+                  className="h-full w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                />
               </div>
               <div className="p-6">
                 <div className="mb-3 flex flex-wrap gap-2">
